@@ -1,0 +1,1 @@
+Primeira versão do código, construímos os primeiros my blocks para andar por tempo e girar por graus para a direita e para a esquerda e nossa primeira saída.

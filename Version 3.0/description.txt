@@ -1,0 +1,1 @@
+Terceira versão do nosso código, investimos em continuar desenvolvendo as saídas e regredimos para blocos mais simples de movimento para melhor entendimento. A medida que esse ponto for atingido, atualizaremos o código com técnicas de controle PID.

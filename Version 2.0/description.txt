@@ -1,0 +1,1 @@
+Segunda versão de nosso código, tentamos praticar algumas técnicas e blocos mais complexos para o nosso robô, incluindo uma adaptação de código PID com apenas o valor proporcional de correção. Também conseguimos construir novas saídas.
