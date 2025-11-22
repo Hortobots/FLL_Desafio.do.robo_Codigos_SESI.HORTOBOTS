@@ -1,0 +1,1 @@
+Versão 5.5 do nosso código, realizamos correções dos valores desatualizados por conta de uma mudança feita por conta da troca de um motor em mal funcionamento. Também criamos um MyBlock chamado de 'trocadel' que serve para o robô transitar para o outro lado da mesa.
