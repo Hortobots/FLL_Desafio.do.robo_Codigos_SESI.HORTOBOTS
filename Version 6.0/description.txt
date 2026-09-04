@@ -1,1 +1,0 @@
-Versão 6.0 de nosso código, nessa versão nos tivemos uma adição de uma nova saída para realizar a saída 06 que pega todos os artefatos que coletamos e colocamos no fórum.
