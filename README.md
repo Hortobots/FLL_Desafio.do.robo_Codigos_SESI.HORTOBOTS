@@ -1,5 +1,4 @@
 <div align="center">
-  <h1>Projeto Robótica LEGO SPIKE Prime / Pybricks</h1>
   <p><strong>Este repositório contém a versão do código de controle e missões para robô LEGO SPIKE Prime utilizando Pybricks.</strong></p>
 </div>
 
