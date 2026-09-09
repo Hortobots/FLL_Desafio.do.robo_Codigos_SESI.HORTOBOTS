@@ -5,8 +5,6 @@ Este repositório contém a versão do código de controle e missões para robô
 ## Estrutura do Projeto
 
 - **`base.py` / `backup/01_Base_Controle/`**: Configuração central do robô (Hub, motores de tração com giroscópio PID, garras A e B, funções de movimentação `andar()`, `girar()`, `mover_garra_a()`, `mover_garra_b()`).
-- **`m1.py` / `backup/02_Missao_1/`**: Rotina da Missão 1.
-- **`m2.py` / `backup/03_Missao_2/`**: Rotina da Missão 2.
 - **`slots.py` / `backup/04_Menu_Slots/`**: Menu interativo executado no display do Hub para alternar rapidamente entre as missões durante a execução.
 
 ## Mapeamento de Portas e Hardware
