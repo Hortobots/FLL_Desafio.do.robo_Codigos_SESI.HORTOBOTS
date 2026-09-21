@@ -1,29 +1,30 @@
-<div align="center">
-  <p><strong>Este repositório contém a versão do código de controle e missões para robô LEGO SPIKE Prime utilizando Pybricks.</strong></p>
-</div>
+# 🤖 FLL Spike Prime — Código de Competição (Pybricks)
 
-<hr/>
+Este repositório contém a arquitetura de software de alta precisão desenvolvida em Python (Pybricks) para o robô da equipe na **FIRST LEGO League (FLL)**. 
 
-## Estrutura do Projeto
+O sistema foi projetado focado em **repetibilidade, alta velocidade de execução e facilidade de operação** durante as rodadas oficiais de 2:30 minutos.
 
-- **`base.py` / `backup/01_Base_Controle/`**: <br>Configuração central do robô (Hub, motores de tração com giroscópio PID, garras A e B, funções de movimentação `andar()`, `girar()`, `mover_garra_a()`, `mover_garra_b()`).
-- **`slots.py` / `backup/04_Menu_Slots/`**: <br>Menu interativo executado no display do Hub para alternar rapidamente entre as missões durante a execução.
+---
 
-<br/>
+## 🌟 Principais Destaques do Código
 
-## Mapeamento de Portas e Hardware
+* **Arquitetura Modular Limpa:** Separação entre a central de controle (`base.py`), missões individuais (`m1.py` a `m5.py`) e gerenciador de execução (`main.py`).
+* **Troca Dinâmica de Perfis de PID (`perfil`):** Ajuste automático dos ganhos $K_p$, $K_i$ e $K_d$ de acordo com a carga física das garras (ex: perfil `PESADO` para combater desvios por centro de massa descompensado).
+* **Navegação Absoluta por Bússola (`girar`):** Curvas calculadas com base no giroscópio interno (IMU), eliminando o acúmulo de erros angulares ao longo do percurso.
+* **Alinhamento Passivo na Parede (`alinhar_parede`):** Re-calibração física do zero do giroscópio no meio da mesa usando o efeito *Wall Squaring*.
+* **Menu de Avanço Automático (1-Clique):** Interface no visor Matrix do Hub que avança a fila de missões sozinha ao término de cada rotina, reduzindo o tempo de troca na Base.
+* **Sintaxe Direta:** Exportação global de funções no `base.py` permitindo chamadas limpas como `andar(40)` ou `girar(-90)` sem necessidade de prefixos.
 
-| Componente | Porta | Detalhes |
-|:---|:---:|:---|
-| **Motor de Tração Esquerdo** | **Porta E** | Invertido *(Counterclockwise)* |
-| **Motor de Tração Direito** | **Porta D** | Padrão |
-| **Garra Motorizada A** | **Porta A** | Acessório frontal/superior |
-| **Garra Motorizada B** | **Porta B** | Acessório auxiliar |
-| **Giroscópio** | **Hub Integrado** | PID configurado *(Kp: -5000, Ki: -150, Kd: -300)* |
-| **Rodas / Dimensões** | **Diâmetro:** 58.1mm | **Distância entre rodas:** 110mm |
+---
 
-<br/>
+## 📁 Estrutura do Projeto
 
-## Arquivos Compactados (.zip)
-
-> O arquivo <code>backup_codigo_completo.zip</code> contém todos os módulos e suas documentações detalhadas organizadas por pasta.
+```text
+.
+├── base.py       # Classe principal (RoboMundial), gerenciador de PID e funções exportadas
+├── m1.py         # Missão 1 - Avanço rápido / Teste de Base
+├── m2.py         # Missão 2 - Travessia de alta velocidade
+├── m3.py         # Missão 3 - Retorno emergencial / rápido à Base
+├── m4.py         # Missão 4 - Encaixe de precisão com acionamento assíncrono de garra
+├── m5.py         # Missão 5 - "Reaching Roots" (PID reforçado para garras pesadas)
+└── main.py       # Menu principal do Hub e sequenciador de rodada
