@@ -37,6 +37,11 @@ O sistema foi projetado focado em **repetibilidade, alta velocidade de execuçã
 ## 📜 Histórico de Versões
 
 - **v9-6-outubro-2026**: Versão mais recente com 5 missões (m1-m5), controle WASD e testes
+- **v8-2-outubro-2026**: Versão com 5 missões, arquivo Bateria.py, controle WASD e testes
+- **v7-1-outubro-2026**: Versão com 5 missões (m1-m5)
+- **v6-21-setembro-2026**: Versão com 4 missões (m1-m4)
+- **v5-18 setembro 2026**: Versão com 4 missões (m1-m4)
+- **v4-16 setembro 2026**: Versão com 4 missões (m1-m4)
 - **v3-10-setembro-2026**: Versão com 3 missões
 - **v2-09-setembro-2026**: Versão anterior com 2 missões
 - **v1-04-setembro-2026**: Versão inicial
