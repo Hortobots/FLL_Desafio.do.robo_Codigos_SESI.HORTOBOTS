@@ -6,8 +6,11 @@
 
 ## Estrutura do Projeto
 
-- **`base.py` / `backup/01_Base_Controle/`**: <br>Configuração central do robô (Hub, motores de tração com giroscópio PID, garras A e B, funções de movimentação `andar()`, `girar()`, `mover_garra_a()`, `mover_garra_b()`).
-- **`slots.py` / `backup/04_Menu_Slots/`**: <br>Menu interativo executado no display do Hub para alternar rapidamente entre as missões durante a execução.
+- **`base.py`**: <br>Configuração central do robô (Hub, motores de tração com giroscópio PID, garras A e B, funções de movimentação `andar()`, `girar()`, `mover_garra_a()`, `mover_garra_b()`).
+- **`slots.py`**: <br>Menu interativo executado no display do Hub para alternar rapidamente entre as missões durante a execução.
+- **`m1.py` - `m5.py`**: <br>Módulos das missões do robô.
+- **`test.py`**: <br>Arquivo de testes para validação das funções do robô.
+- **`wasd.py`**: <br>Controle manual do robô através do Hub (similar a controle de jogo).
 
 <br/>
 
@@ -24,6 +27,9 @@
 
 <br/>
 
-## Arquivos Compactados (.zip)
+## Histórico de Versões
 
-> O arquivo <code>backup_codigo_completo.zip</code> contém todos os módulos e suas documentações detalhadas organizadas por pasta.
+- **v9-6-outubro-2026**: Versão mais recente com 5 missões (m1-m5), controle WASD e testes
+- **v3-10-setembro-2026**: Versão com 3 missões
+- **v2-09-setembro-2026**: Versão anterior com 2 missões
+- **v1-04-setembro-2026**: Versão inicial
