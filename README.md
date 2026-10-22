@@ -22,12 +22,9 @@ O sistema foi projetado focado em **repetibilidade, alta velocidade de execuçã
 ```text
 .
 ├── base.py       # Classe principal (RoboMundial), gerenciador de PID e funções exportadas
-├── m1.py         # Missão 1 - Avanço rápido / Teste de Base
-├── m2.py         # Missão 2 - Travessia de alta velocidade
-├── m3.py         # Missão 3 - Retorno emergencial / rápido à Base
-├── m4.py         # Missão 4 - Encaixe de precisão com acionamento assíncrono de garra
-├── m5.py         # Missão 5 - "Reaching Roots" (PID reforçado para garras pesadas)
-├── main.py       # Menu principal do Hub e sequenciador de rodada
+├── forca.py      # Medidor em tempo real de carga, torque e peso estimado nos motores
+├── m1.py a m6.py # Missões individuais do robô na mesa da competição
+├── slots.py      # Menu sequenciador de missões no Hub com avanço automático e cronômetro
 ├── test.py       # Arquivo de testes para validação das funções do robô
 └── wasd.py       # Controle manual do robô através do Hub (similar a controle de jogo)
 ```
@@ -36,7 +33,10 @@ O sistema foi projetado focado em **repetibilidade, alta velocidade de execuçã
 
 ## 📜 Histórico de Versões
 
-- **v9-6-outubro-2026**: Versão mais recente com 5 missões (m1-m5), controle WASD e testes
+- **v12-21-outubro-2026**: Versão com 6 missões (m1-m6), nova rotina m6, menu por slots, medidor de força/torque, controle WASD e testes
+- **v11-16-outubro-2026**: Versão com 5 missões (m1-m5), ajustes de precisão em base.py e trajetórias, menu por slots e medidor de força
+- **v10-15-outubro-2026**: Versão com 5 missões (m1-m5), introdução do medidor de força/torque (forca.py), menu por slots e testes
+- **v9-6-outubro-2026**: Versão com 5 missões (m1-m5), controle WASD e testes
 - **v8-2-outubro-2026**: Versão com 5 missões, arquivo Bateria.py, controle WASD e testes
 - **v7-1-outubro-2026**: Versão com 5 missões (m1-m5)
 - **v6-21-setembro-2026**: Versão com 4 missões (m1-m4)
