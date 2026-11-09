@@ -12,12 +12,20 @@ motor_esq = Motor(Port.E, Direction.COUNTERCLOCKWISE)  # Motor esquerdo na porta
 motor_dir = Motor(Port.D)  # Motor direito na porta D com rotação normal
 drive = DriveBase(motor_esq, motor_dir, wheel_diameter=58.1, axle_track=110)  # Configura a base de tração do robô
 
-try:  # Tenta inicializar os motores adicionais das garras
-    garra_a = Motor(Port.A)  # Inicializa a garra A na porta A
-    garra_b = Motor(Port.B)  # Inicializa a garra B na porta B
-except:  # Se não encontrar as garras
-    garra_a = None  # Garra A fica desativada
-    garra_b = None  # Garra B fica desativada
+# Inicialização independente dos motores auxiliares das garras
+try:
+    garra_a = Motor(Port.A)
+    print("[OK] Garra A detectada na Porta A.")
+except Exception as e:
+    garra_a = None
+    print(f"[AVISO] Garra A não conectada na Porta A: {e}")
+
+try:
+    garra_b = Motor(Port.B)
+    print("[OK] Garra B detectada na Porta B.")
+except Exception as e:
+    garra_b = None
+    print(f"[AVISO] Garra B não conectada na Porta B: {e}")
 
 hub.light.on(Color.GREEN)  # Luz verde no Hub indicando modo teleoperado ativo
 
