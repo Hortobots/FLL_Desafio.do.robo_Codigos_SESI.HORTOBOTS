@@ -1,41 +1,47 @@
-from pybricks.tools import hub_menu, StopWatch  # Importa a função de menu no ecrã do hub e o temporizador
-from pybricks.parameters import Color  # Importa as cores do LED do Hub
-from base import hub  # Importa a instância do Hub configurada no módulo base
-import m1, m2, m3, m4, m5  # Importa os módulos de código das missões 1, 2, 3, 4 e 5
+from pybricks.tools import hub_menu, StopWatch
+from pybricks.parameters import Color
+from base import hub
+import m1, m2, m3, m5, m6, m7, saida7
 
-SEQUENCIA = ["1", "2", "3", "4", "5"]  # Lista com a ordem dos números de missões a exibir no menu
-MISSOES = {  # Dicionário que associa a opção do menu à função de execução da respetiva missão
-    "1": m1.run,  # Associa a opção 1 à função run() do módulo m1
-    "2": m2.run,  # Associa a opção 2 à função run() do módulo m2
-    "3": m3.run,  # Associa a opção 3 à função run() do módulo m3
-    "4": m4.run,  # Associa a opção 4 à função run() do módulo m4
-    "5": m5.run   # Associa a opção 5 à função run() do módulo m5
+# Sequência das saídas/missões exibidas no display 5x5 do Hub
+SEQUENCIA = ["1", "2", "3", "5", "6", "7", "S"]
+
+# Mapeamento de cada caractere do menu para a função de execução da missão
+MISSOES = {
+    "1": m1.run,       # Saída 1: Missão 1
+    "2": m2.run,       # Saída 2: Missão 2
+    "3": m3.run,       # Saída 3: Missão 3
+    "5": m5.run,       # Saída 5: Missão 5
+    "6": m6.run,       # Saída 6: Missão 6
+    "7": m7.run,       # Saída 7: Missão 7
+    "S": saida7.run,   # Saída S: Rotina com curvas em arco
 }
 
-posicao = 0  # Inicializa o índice de navegação do menu no slot 0
-cronometro = StopWatch()  # Inicializa o temporizador para medir a duração total de cada missão executada
+posicao = 0
+cronometro = StopWatch()
 
-while True:  # Ciclo principal de seleção do menu no robô
-    hub.light.on(Color.BLUE)  # Acende a luz azul no Hub indicando que o menu está aguardando escolha
+while True:
+    hub.light.on(Color.BLUE)  # Azul = Aguardando seleção na Base
     
-    ordem_menu = SEQUENCIA[posicao:] + SEQUENCIA[:posicao]  # Reordena a lista do menu para iniciar na posição atual
-    escolha = hub_menu(*ordem_menu)  # Abre o menu interativo no visor do Hub para seleção com os botões
+    ordem_menu = SEQUENCIA[posicao:] + SEQUENCIA[:posicao]
+    escolha = hub_menu(*ordem_menu)
     
-    if escolha in MISSOES:  # Se a opção escolhida pelo utilizador for válida
-        print(f"\n[SLOT {escolha}] Executando...")  # Imprime aviso de início no terminal
-        cronometro.reset()  # Reinicia o cronómetro para 0 ms antes de arrancar a missão
+    if escolha in MISSOES:
+        print(f"\n[SLOT {escolha}] Executando...")
+        cronometro.reset()
         
-        try:  # Tenta executar a missão selecionada
-            hub.light.on(Color.GREEN)  # Acende a luz verde no Hub indicando missão em andamento
-            MISSOES[escolha]()  # Executa a rotina da missão selecionada no dicionário
+        try:
+            hub.light.on(Color.GREEN)  # Verde = Missão em andamento
+            MISSOES[escolha]()
             
-            tempo = cronometro.time() / 1000.0  # Converte o tempo decorrido para segundos
-            print(f"[OK] Slot {escolha} em {tempo:.2f}s")  # Imprime mensagem de sucesso e tempo de conclusão
-            hub.speaker.beep(frequency=600, duration=150)  # Emite sinal sonoro agudo indicando conclusão bem-sucedida
+            tempo = cronometro.time() / 1000.0
+            print(f"[OK] Slot {escolha} finalizado em {tempo:.2f}s")
+            hub.speaker.beep(frequency=600, duration=150)
             
-            posicao = (SEQUENCIA.index(escolha) + 1) % len(SEQUENCIA)  # Avança automaticamente para o próximo slot na sequência
+            # Avança automaticamente para o próximo slot
+            posicao = (SEQUENCIA.index(escolha) + 1) % len(SEQUENCIA)
             
-        except Exception as e:  # Captura falhas de execução durante a missão
-            hub.light.on(Color.RED)  # Acende a luz vermelha no Hub indicando erro durante a missão
-            hub.speaker.beep(frequency=200, duration=800)  # Emite sinal sonoro grave indicando falha
-            print(f"[ERRO SLOT {escolha}]:", e)  # Imprime os detalhes do erro no terminal
+        except Exception as e:
+            hub.light.on(Color.RED)  # Vermelho = Falha na execução
+            hub.speaker.beep(frequency=200, duration=800)
+            print(f"[ERRO SLOT {escolha}]:", e)
