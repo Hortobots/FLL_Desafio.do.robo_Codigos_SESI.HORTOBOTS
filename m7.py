@@ -13,6 +13,7 @@ def run():
     
     # Recuo e reorientação da trajetória
     andar(-25, velocidade=700, aceleracao=500)
+    # Giro de 80° em velocidade baixa (80 deg/s) intencional para evitar derrapagem por inércia da garra carregada (alterar para 800 se foi digitação rápida)
     girar_relativo(80, velocidade=80)
     andar(-35, velocidade=700, aceleracao=500)
     
