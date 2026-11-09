@@ -158,15 +158,24 @@ class RoboMundial:  # Declaração da classe principal que gere todo o robô
         self.drive.settings(straight_speed=v_orig)  # Restaura a velocidade original da base
         self.tempo()  # Imprime e regista o tempo decorrido após a curva
 
-    def checar_bateria(self) -> int:  # Monitoriza a tensão e nível da bateria do Hub
-        tensao = self.hub.battery.voltage()  # Lê a tensão atual da bateria em milivolts (mV)
-        porcentagem = max(0, min(100, int((tensao - 7200) / (8300 - 7200) * 100)))  # Calcula a percentagem da bateria com base na faixa operacional
-        print(f"[TELEMETRIA] Tensão: {tensao}mV | Bateria: {porcentagem}%")  # Exibe a leitura de bateria no terminal
-        if tensao < 7400:  # Se a tensão estiver abaixo do limite seguro de 7.4V
-            self.hub.light.on(Color.RED)  # Liga a luz vermelha no Hub indicando alerta de bateria
-            self.hub.speaker.beep(frequency=300, duration=800)  # Emite um aviso sonoro grave de bateria fraca
-            print("[ALERTA] Bateria fraca!")  # Imprime aviso de alerta
-        return porcentagem  # Retorna a percentagem de bateria
+    def checar_bateria(self) -> int:
+        """Lê a tensão (mV) e corrente (mA) da bateria, estimando a carga restante."""
+        tensao = self.hub.battery.voltage()  # Leitura em milivolts
+        corrente = self.hub.battery.current()  # Leitura em miliamperes
+        
+        # Faixa operacional da bateria 2S Li-ion do Spike Prime: 7000 mV (corte) a 8300 mV (100%)
+        v_min = 7000
+        v_max = 8300
+        porcentagem = max(0, min(100, int((tensao - v_min) / (v_max - v_min) * 100)))
+        
+        print(f"[BATERIA] Tensão: {tensao} mV ({tensao/1000.0:.2f}V) | Corrente: {corrente} mA | Carga: {porcentagem}%")
+        
+        if tensao < 7400:  # Abaixo de 7.4V: risco de degradação de torque/velocidade nos motores
+            self.hub.light.on(Color.RED)
+            self.hub.speaker.beep(frequency=300, duration=800)
+            print("[ALERTA] Bateria baixa! Recomendável recarregar o Hub antes da rodada.")
+        
+        return porcentagem
 
 # Criação da instância global do robô e atalhos diretos para facilitar as chamadas nos módulos
 bot = RoboMundial()  # Instancia a classe principal RoboMundial

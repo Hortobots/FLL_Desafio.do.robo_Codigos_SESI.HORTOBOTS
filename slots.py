@@ -1,6 +1,6 @@
 from pybricks.tools import hub_menu, StopWatch
 from pybricks.parameters import Color
-from base import hub
+from base import hub, checar_bateria
 import m1, m2, m3, m5, m6, m7, saida7
 
 # Sequência das saídas/missões exibidas no display 5x5 do Hub
@@ -19,6 +19,9 @@ MISSOES = {
 
 posicao = 0
 cronometro = StopWatch()
+
+# Diagnóstico de bateria na inicialização do robô
+checar_bateria()
 
 while True:
     hub.light.on(Color.BLUE)  # Azul = Aguardando seleção na Base
