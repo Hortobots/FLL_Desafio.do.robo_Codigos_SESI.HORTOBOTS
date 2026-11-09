@@ -29,49 +29,6 @@ O sistema foi projetado focado em **repetibilidade, alta velocidade de execuçã
 ├── test.py       # Arquivo de testes para validação das funções do robô
 └── wasd.py       # Controle manual do robô através do Hub (similar a controle de jogo)
 ```
-
----
-
-## 🧭 Guia de Versionamento e Boas Práticas (Git na FLL)
-
-Versionamento é um histórico com botão de voltar. Em vez de copiar a pasta e chamar de v12, o Git guarda cada mudança do mesmo projeto, com data e uma descrição do que você fez.
-
-### 📌 Os 4 conceitos que você precisa:
-
-- **Commit:** uma “foto” do projeto naquele momento, com uma mensagem. Ex.: `ajusta giro da m2 de 90 para 88`.
-- **Branch:** uma linha paralela para testar uma ideia sem estragar a versão que funciona. Se der certo, você junta; se não, descarta.
-- **Tag:** uma etiqueta numa versão importante. Ex.: `regional-2026`, o código exato que foi para a competição.
-- **GitHub:** o armazenamento na nuvem do seu histórico. Git é a ferramenta, GitHub é o site.
-
-### ⚡ O fluxo do dia a dia (4 comandos):
-
-```bash
-git status                       # o que mudou
-git add .                        # separa o que vai entrar
-git commit -m "ajusta giro da m2"
-git push                         # envia para o GitHub
-```
-
-### 🛠️ Outros comandos úteis:
-
-```bash
-git log --oneline                # histórico resumido
-git switch -c teste-pid          # cria uma branch para experimentar
-git tag regional-2026            # marca uma versão
-git push --tags                  # envia as tags
-```
-
-### 🏆 Aplicando na FLL:
-
-- Faça um commit a cada ajuste que funcionou (ou que você quer lembrar), com mensagem clara. Suas anotações da tabela viram boas mensagens.
-- Antes de uma competição, crie uma tag. Se algo quebrar depois, você volta para o código que funcionava.
-- Para testar algo arriscado (um PID novo, por exemplo), use uma branch.
-
-> [!TIP]
-> **Uma regra que evita dor de cabeça:** commits pequenos e frequentes. Um commit gigante de “mudei tudo” é inútil quando você precisa achar o que quebrou.
-
----
-
 ## 📜 Histórico de Versões
 
 - **v22-06-novembro-2026**: Grande reestruturação e expansão do sistema (base.py com telemetria avançada, slots.py otimizado, 7 missões m1-m7 e rotina saida7.py)
