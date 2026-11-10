@@ -19,13 +19,14 @@ Diferente do ambiente de programação por blocos tradicional, o uso de Python d
 
 ```text
 .
-├── base.py       # Núcleo cinemático (RoboMundial), PID dinâmico, IMU e controle de garras
-├── slots.py      # Gerenciador de saídas oficial com menu interativo e cronômetro
-├── saida7.py     # Rotina com sequências de curvas em arco e desengate mecânico
-├── m1.py a m7.py # Rotinas independentes de cada missão da mesa
-├── forca.py      # Diagnóstico e telemetria de carga/torque nos motores em tempo real
-├── test.py       # Rotinas de bancada para validação de motores e sensores
-└── wasd.py       # Controle manual via Hub para calibrações rápidas na mesa
+├── base.py                   # Núcleo cinemático (RoboMundial), PID dinâmico, IMU e controle de garras
+├── slots.py                  # Gerenciador de saídas oficial com menu interativo e cronômetro
+├── saida7.py                 # Rotina com sequências de curvas em arco e desengate mecânico
+├── m1.py a m7.py             # Rotinas independentes de cada missão da mesa
+├── forca.py                  # Diagnóstico e telemetria de carga/torque nos motores em tempo real
+├── test.py                   # Rotinas de bancada para validação de motores e sensores
+├── wasd.py                   # Controle manual via Hub para calibrações rápidas na mesa
+└── v1/ a v22/                # Pastas de histórico de evolução da temporada (evidências para os juízes)
 ```
 
 ### Detalhamento dos Módulos:
@@ -36,6 +37,7 @@ Diferente do ambiente de programação por blocos tradicional, o uso de Python d
 * **`m1.py` a `m7.py`:** Implementação isolada de cada missão/saída da equipe, com trajetórias, velocidades e ângulos parametrizados.
 * **`forca.py`:** Ferramenta de bancada para medir o torque exercido pelos motores nos mecanismos, auxiliando no projeto mecânico das garras.
 * **`test.py` & `wasd.py`:** Utilitários para bancada e testes manuais de alinhamento de sensores, atuadores e calibração de ângulo de largada.
+* **`v1/` a `v22/`:** Registros das 22 versões iterativas desenvolvidas durante a temporada, servindo de evidência comprobatória do processo de engenharia para a avaliação de Robot Design.
 
 ---
 
@@ -54,6 +56,15 @@ if __name__ == "__main__":
     run()
 ```
 Isso permite que os programadores testem e refinem uma única missão diretamente na bancada ou na mesa, executando o arquivo da missão (ex: `m7.py`) sem necessidade de abrir o menu geral.
+
+---
+
+## 🏅 Evidências do Processo de Engenharia (Para os Juízes da FLL)
+
+Para demonstrar o ciclo de engenharia (Planejar ➔ Construir ➔ Testar ➔ Melhorar), o repositório mantém:
+1. **Código Atual Ativo (Raiz):** Pronto para execução direta no robô.
+2. **Pastas Datadas (`v1/` a `v22/`):** Evidência física de cada iteração, documentando desde os primeiros protótipos de 2 saídas em setembro até a arquitetura final de 7 saídas em novembro.
+3. **Histórico do Git e Tags:** Linha do tempo auditável de cada ajuste com tags nos marcos principais (`v12-outubro`, `v22-oficial-novembro`).
 
 ---
 
@@ -87,7 +98,11 @@ git push --tags
 
 ## 📜 Histórico Consolidado da Temporada
 
-O histórico completo da evolução do projeto está preservado nos commits e tags do Git:
-- **`v22-oficial-novembro` (Tag):** Versão atual unificada na raiz, com menu de 7 saídas, checagem de bateria e documentação.
-- **`v12-outubro` (Tag):** Marco intermediário anterior da temporada com 6 missões.
-- **Commits v1 a v21:** Trajetória completa de refinamento das rotinas, curvas em arco e perfil de potência documentada no histórico do repositório.
+- **v22 (06/Nov/2026) - Tag `v22-oficial-novembro`:** Versão atual na raiz com 7 saídas, telemetria de bateria, slots otimizado e rotinas completas de missões.
+- **v21 (05/Nov/2026):** Adição da missão `m7.py` e consolidação de 7 rotinas independentes.
+- **v20 (04/Nov/2026 - Tarde):** Refinamento de precisão nas missões `m1`, `m3`, `m6` e `saida7`.
+- **v19 (04/Nov/2026 - Manhã):** Criação da estratégia `saida7.py` com curvas contínuas em arco.
+- **v18 a v14 (Outubro/2026):** Evolução contínua das rotinas de missão `m4` e `m6`, sincronismo de garras e perfis de potência.
+- **v12 a v10 (Outubro/2026) - Tag `v12-outubro`:** Implementação do medidor de torque (`forca.py`), transição para 6 missões e primeiro sequenciador por slots.
+- **v9 a v7 (Outubro/2026):** Adição de controle manual (`wasd.py`) e rotinas `m1` a `m5`.
+- **v6 a v1 (Setembro/2026):** Versões iniciais de desenvolvimento, arquitetura modular base e calibração preliminar do IMU.
